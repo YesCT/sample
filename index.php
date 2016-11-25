@@ -1,8 +1,6 @@
 <?php
 
-// Wrapper referenced in
-// https://iag.me/socialmedia/build-your-first-twitter-app-using-php-in-8-easy-steps/
-require_once('vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php');
+require __DIR__ . '/vendor/autoload.php';
 
 /**
  * Do not commit secrets to the git repo.
