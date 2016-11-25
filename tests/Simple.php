@@ -15,7 +15,7 @@ class Simple extends PHPUnit_Extensions_Selenium2TestCase
   protected function setUp()
   {
     $this->setBrowser('chrome');
-    $this->setBrowserUrl('http://localhost:8888/twitter/');
+    $this->setBrowserUrl(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_BASEURL);
   }
 
   public function testTitle()
