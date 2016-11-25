@@ -30,10 +30,17 @@ $requestMethod = "GET";
 $getfield = '?screen_name=YesCT&count=1';
 $twitter = new TwitterAPIExchange($settings);
 
-echo("<html><head><title>drupal</title></head><body>");
-
-echo $twitter->setGetfield($getfield)
+$result_json = $twitter->setGetfield($getfield)
   ->buildOauth($url, $requestMethod)
   ->performRequest();
+
+$result = json_decode($result_json, TRUE);
+foreach ($result as $item) {
+  $name = $item['user']['name'];
+}
+
+echo("<html><head><title>drupal</title></head><body>");
+
+echo($name);
 
 echo("</body></html>");
