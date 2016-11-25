@@ -2,6 +2,9 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+require_once('src/GetJson.php');
+require_once('src/Result.php');
+
 /**
  * Do not commit secrets to the git repo.
  *
@@ -24,22 +27,14 @@ $settings = array(
   'consumer_secret' => YOUR_CONSUMER_SECRET,
 );
 
-$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
-$requestMethod = "GET";
-$getfield = '?screen_name=YesCT&count=1';
-$twitter = new TwitterAPIExchange($settings);
+$something = new \CathyTest\JsonResult();
+$result_json = $something->getJsonResult($settings);
 
-$result_json = $twitter->setGetfield($getfield)
-  ->buildOauth($url, $requestMethod)
-  ->performRequest();
-
-$result = json_decode($result_json, TRUE);
-foreach ($result as $item) {
-  $output = $item['user']['description'];
-}
+$result = new \CathyTest\Result();
+$description = $result->getDescription($result_json);
 
 echo("<html><head><title>drupal</title></head><body>");
 
-echo($output);
+echo($description);
 
 echo("</body></html>");
