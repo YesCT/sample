@@ -2,7 +2,7 @@
 
 // Wrapper referenced in
 // https://iag.me/socialmedia/build-your-first-twitter-app-using-php-in-8-easy-steps/
-require_once('src/twitter-api-php/TwitterAPIExchange.php');
+require_once('vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php');
 
 /**
  * Do not commit secrets to the git repo.
