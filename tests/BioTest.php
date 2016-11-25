@@ -15,7 +15,6 @@ class BioTest extends PHPUnit_Extensions_Selenium2TestCase
   public function testBio()
   {
     $this->url('/index.php');
-    $this->assertEquals('drupal', $this->title());
     $content = $this->byTag('body')->text();
     $this->assertContains('contributing', $content);
   }
