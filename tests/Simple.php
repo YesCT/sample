@@ -21,7 +21,7 @@ class Simple extends PHPUnit_Extensions_Selenium2TestCase
   public function testTitle()
   {
     $this->url('http://www.example.com/');
-    $this->assertEquals('Example WWW Page', $this->title());
+    $this->assertEquals('Example Domain', $this->title());
   }
 
 }
