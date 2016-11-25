@@ -28,13 +28,26 @@ $settings = array(
 );
 
 $something = new \CathyTest\JsonResult();
-$result_json = $something->getJsonResult($settings);
+$user = 'YesCT';
+$result_json = $something->getJsonTimeline($settings, $user);
 
 $result = new \CathyTest\Result();
-$description = $result->getDescription($result_json);
 
-echo("<html><head><title>drupal</title></head><body>");
+echo("<html><head><title>Cathy Test</title></head><body>");
 
-echo($description);
+if (!$result->hasError($result_json)) {
+  $description = $result->getDescription($result_json);
+  $id = $result->getId($result_json);
+
+  echo("<h2>User description</h2>");
+  echo($description);
+
+  echo("<h2>Tweet id</h2>");
+  echo($id);
+}
+
+echo("<h2>Raw</h2>");
+
+echo($result_json);
 
 echo("</body></html>");
