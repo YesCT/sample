@@ -36,11 +36,11 @@ $result_json = $twitter->setGetfield($getfield)
 
 $result = json_decode($result_json, TRUE);
 foreach ($result as $item) {
-  $name = $item['user']['name'];
+  $output = $item['user']['description'];
 }
 
 echo("<html><head><title>drupal</title></head><body>");
 
-echo($name);
+echo($output);
 
 echo("</body></html>");
