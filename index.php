@@ -2,7 +2,7 @@
 
 // Wrapper referenced in
 // https://iag.me/socialmedia/build-your-first-twitter-app-using-php-in-8-easy-steps/
-//require_once('src/twitter-api-php/TwitterAPIExchange.php');
+require_once('src/twitter-api-php/TwitterAPIExchange.php');
 
 /**
  * Do not commit secrets to the git repo.
@@ -25,6 +25,15 @@ $settings = array(
   'consumer_secret' => YOUR_CONSUMER_SECRET,
 );
 
+$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+$requestMethod = "GET";
+$getfield = '?screen_name=YesCT&count=1';
+$twitter = new TwitterAPIExchange($settings);
+
 echo("<html><head><title>drupal</title></head><body>");
-echo("me");
+
+echo $twitter->setGetfield($getfield)
+  ->buildOauth($url, $requestMethod)
+  ->performRequest();
+
 echo("</body></html>");
