@@ -12,10 +12,11 @@ require __DIR__ . '/vendor/autoload.php';
  * const YOUR_CONSUMER_KEY = 'xxxx';
  * const YOUR_CONSUMER_SECRET = 'xxxx';
  * @endcode
+ *
+ * @see https://dev.twitter.com/apps/
  */
 require_once('mysecrets.php');
 
-/** Set access tokens here - see: https://dev.twitter.com/apps/ **/
 $settings = array(
   'oauth_access_token' => YOUR_OAUTH_ACCESS_TOKEN,
   'oauth_access_token_secret' => YOUR_OAUTH_ACCESS_TOKEN_SECRET,
