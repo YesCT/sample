@@ -2,9 +2,6 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-require_once('src/GetJson.php');
-require_once('src/Result.php');
-
 /**
  * Do not commit secrets to the git repo.
  *
