@@ -2,6 +2,8 @@
 
 namespace CathyTest\Tests\Unit;
 
+use CathyTest\Result;
+
 /**
  * Tests if a phpunit test can run.
  */
@@ -16,8 +18,9 @@ class SimpleTest extends \PHPUnit_Framework_TestCase {
   /**
    * @dataProvider providerTestHasError
    */
-  public function testHasError($result, $expected) {
-    $this->assertEquals($expected, $result);
+  public function testHasError($result_json, $expected) {
+    $result = new Result();
+    $this->assertEquals($expected, $result_json);
   }
 
   public function providerTestHasError() {
