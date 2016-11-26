@@ -1,5 +1,9 @@
 <?php
 
+namespace CathyTest\Tests\Integration;
+
+use PHPUnit_Extensions_Selenium2TestCase;
+
 /**
  * Verifies tests will run.
  *
