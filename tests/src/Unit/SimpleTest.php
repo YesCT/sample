@@ -16,8 +16,8 @@ class SimpleTest extends \PHPUnit_Framework_TestCase {
   /**
    * @dataProvider providerTestHasError
    */
-  public function testHasError() {
-    $this->assertEquals(TRUE, TRUE);
+  public function testHasError($result, $expected) {
+    $this->assertEquals($expected, $result);
   }
 
   public function providerTestHasError() {
