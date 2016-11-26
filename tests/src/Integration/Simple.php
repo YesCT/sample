@@ -19,8 +19,7 @@ class Simple extends PHPUnit_Extensions_Selenium2TestCase {
   /**
    * @{inheritdoc}
    */
-  protected function setUp()
-  {
+  protected function setUp() {
     $this->setBrowser('chrome');
     $this->setBrowserUrl(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_BASEURL);
   }
@@ -28,8 +27,7 @@ class Simple extends PHPUnit_Extensions_Selenium2TestCase {
   /**
    * Tests HTML title element.
    */
-  public function testTitle()
-  {
+  public function testTitle() {
     $this->url('/');
     $this->assertEquals('Example Domain', $this->title());
   }
