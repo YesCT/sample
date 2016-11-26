@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Verifies tests will run.
  *
@@ -9,8 +10,7 @@
  *
  * Contains integration tests.
  */
-class Simple extends PHPUnit_Extensions_Selenium2TestCase
-{
+class Simple extends PHPUnit_Extensions_Selenium2TestCase {
 
   protected function setUp()
   {

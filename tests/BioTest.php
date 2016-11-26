@@ -3,8 +3,7 @@
 /**
  * Tests for text from a bio.
  */
-class BioTest extends PHPUnit_Extensions_Selenium2TestCase
-{
+class BioTest extends PHPUnit_Extensions_Selenium2TestCase {
 
   protected function setUp()
   {
