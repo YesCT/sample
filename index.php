@@ -24,13 +24,11 @@ $settings = array(
   'consumer_secret' => YOUR_CONSUMER_SECRET,
 );
 
-$name = '';
-
 ?>
 
 <html><head><title>Cathy Test</title></head><body>
 
-<form name="twitterUsername" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
+<form name="twitterUsername" method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
 Username: <input type="text" name="user" value="" />
 <input type="submit" value="Gather Tweets" />
 </form>
@@ -38,33 +36,38 @@ Username: <input type="text" name="user" value="" />
 <?php
 
 // If the form has been submitted.
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  //$user = 'YesCT';
-  $user = $_POST["user"];
-  //$user = validate_user($_POST["user"]);
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  $user = $_GET["user"];
+  //$user = validate_user($_GET["user"]);
 
-  // Get the results from twitter for the username from the form.
-  $something = new \CathyTest\JsonResult();
-  $result_json = $something->getJsonTimeline($settings, $user);
+  // Only process if have input and it is valid.
+  if ($user != '') {
+    echo("<h2>User</h2>");
+    echo($user);
 
-  $result = new \CathyTest\Result();
+    // Get the results from twitter for the username from the form.
+    $something = new \CathyTest\JsonResult();
+    $result_json = $something->getJsonTimeline($settings, $user);
 
-  // If no error, process the JSON result.
-  if (!$result->hasError($result_json)) {
-    $description = $result->getDescription($result_json);
-    $id = $result->getId($result_json);
+    $result = new \CathyTest\Result();
 
-    // Print out select information.
-    echo("<h2>User description</h2>");
-    echo($description);
+    // If no error, process the JSON result.
+    if (!$result->hasError($result_json)) {
+      $description = $result->getDescription($result_json);
+      $id = $result->getId($result_json);
 
-    echo("<h2>Tweet id</h2>");
-    echo($id);
+      // Print out select information.
+      echo("<h2>User description</h2>");
+      echo($description);
+
+      echo("<h2>Tweet id</h2>");
+      echo($id);
+    }
+
+    // Print out the raw JSON for debugging.
+    echo("<h2>Raw</h2>");
+    echo($result_json);
   }
-
-  // Print out the raw JSON for debugging.
-  echo("<h2>Raw</h2>");
-  echo($result_json);
 }
 
 echo("</body></html>");
