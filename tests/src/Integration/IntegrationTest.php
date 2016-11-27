@@ -7,7 +7,7 @@ use PHPUnit_Extensions_Selenium2TestCase;
 /**
  * Tests for text from a bio.
  */
-class BioTest extends PHPUnit_Extensions_Selenium2TestCase {
+class IntegrationTest extends PHPUnit_Extensions_Selenium2TestCase {
 
   /**
    * @{inheritdoc}
@@ -20,8 +20,8 @@ class BioTest extends PHPUnit_Extensions_Selenium2TestCase {
   /**
    * Tests if the display contains a word from the bio description.
    */
-  public function testBio() {
-    $this->url('/index.php');
+  public function testBioForYesCT() {
+    $this->url('/index.php?user=YesCT');
     $content = $this->byTag('body')->text();
     $this->assertContains('contributing', $content);
   }

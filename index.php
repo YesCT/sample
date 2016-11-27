@@ -38,10 +38,11 @@ Username: <input type="text" name="user" value="" />
 // If the form has been submitted.
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $user = $_GET["user"];
-  //$user = validate_user($_GET["user"]);
+  $validation = new \CathyTest\Validation();
+  $username_is_valid = $validation->isValidUsername($user);
 
   // Only process if have input and it is valid.
-  if ($user != '') {
+  if ($user != '' && $username_is_valid) {
     echo("<h2>User</h2>");
     echo($user);
 
