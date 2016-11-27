@@ -17,7 +17,14 @@ class Validation {
    *   Whether input is valid or not.
    */
   public function isValidUsername($username) {
-    return TRUE;
+    $valid = TRUE;
+
+    // Just a tiny bit of validation. No spaces allowed.
+    if (strpos($username, ' ') !== false) {
+      $valid = FALSE;
+    }
+
+    return $valid;
   }
 
 }
