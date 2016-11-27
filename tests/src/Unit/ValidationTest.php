@@ -2,6 +2,8 @@
 
 namespace CathyTest\Tests\Unit;
 
+use CathyTest\Validation;
+
 /**
  * Tests validation logic.
  */
@@ -18,8 +20,8 @@ class ValidationTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider providerTestIsValidUsername
    */
   public function testIsValidUsername($username, $expected) {
-    // Start with a failing test.
-    $this->assertEquals(TRUE, FALSE);
+    $validation = new Validation();
+    $this->assertEquals($expected, $validation->isValidUsername($username));
   }
 
   /**
