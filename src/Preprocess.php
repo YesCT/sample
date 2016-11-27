@@ -25,12 +25,8 @@ class Preprocess {
     // Trim trailing whitespace.
     $username = rtrim($username);
 
-    // Remove leading @ symbol.
-    $stringToReplace = '@';
-    $pos = strpos($username, $stringToReplace);
-    if ($pos !== false) {
-      $username = substr_replace($username, '', $pos, strlen($stringToReplace));
-    }
+    // Trim leading @ symbols.
+    $username = ltrim($username, '@');
 
     return $username;
   }

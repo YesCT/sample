@@ -53,10 +53,11 @@ class PreprocessTest extends \PHPUnit_Framework_TestCase {
         '@YesCT',
         'YesCT',
       ],
-      // @todo Think about how to handle this.
+      // Strip all leading @ symbols, because leading @ sent to twitter yields
+      // strange results (appearing to return the last result instead of error).
       'leading ats' => [
         '@@YesCT',
-        '@YesCT',
+        'YesCT',
       ],
     ];
   }

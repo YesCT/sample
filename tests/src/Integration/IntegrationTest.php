@@ -53,6 +53,18 @@ class IntegrationTest extends PHPUnit_Extensions_Selenium2TestCase {
   }
 
   /**
+   * Tests if info is displayed for a malformed username.
+   */
+  public function testBadUsername() {
+    $not_a_username = '@@me vvv';
+    $this->url('/index.php?user=' . $not_a_username);
+    $content = $this->byTag('body')->text();
+
+    // Should not have a description for a nonexistent user.
+    $this->assertNotContains('User description', $content);
+  }
+
+  /**
    * Tests if the display contains a word from the bio description.
    *
    * Use a known user, and a known word from their bio.
