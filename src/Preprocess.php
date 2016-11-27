@@ -19,6 +19,9 @@ class Preprocess {
    *   Processed username.
    */
   public function preprocessUsername($username) {
+    // Be safe.
+    $username = htmlspecialchars($username);
+
     // Trim trailing whitespace.
     $username = rtrim($username);
 
