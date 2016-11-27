@@ -19,6 +19,13 @@ class Preprocess {
    *   Processed username.
    */
   public function preprocessUsername($username) {
+    // Remove leading @ symbol.
+    $stringToReplace = '@';
+    $pos = strpos($username, $stringToReplace);
+    if ($pos !== false) {
+      $username = substr_replace($username, '', $pos, strlen($stringToReplace));
+    }
+
     return $username;
   }
 

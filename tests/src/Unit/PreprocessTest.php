@@ -21,7 +21,7 @@ class PreprocessTest extends \PHPUnit_Framework_TestCase {
    */
   public function testPreprocessUsername($username, $expected) {
     $preprocess = new Preprocess();
-    $this->assertEquals(TRUE, FALSE);
+    $this->assertEquals($expected, $preprocess->preprocessUsername($username));
   }
 
   /**
