@@ -24,27 +24,47 @@ $settings = array(
   'consumer_secret' => YOUR_CONSUMER_SECRET,
 );
 
-$something = new \CathyTest\JsonResult();
-$user = 'YesCT';
-$result_json = $something->getJsonTimeline($settings, $user);
+$name = '';
 
-$result = new \CathyTest\Result();
+?>
 
-echo("<html><head><title>Cathy Test</title></head><body>");
+<html><head><title>Cathy Test</title></head><body>
 
-if (!$result->hasError($result_json)) {
-  $description = $result->getDescription($result_json);
-  $id = $result->getId($result_json);
+<form name="twitterUsername" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
+Username: <input type="text" name="user" value="" />
+<input type="submit" value="Gather Tweets" />
+</form>
 
-  echo("<h2>User description</h2>");
-  echo($description);
+<?php
 
-  echo("<h2>Tweet id</h2>");
-  echo($id);
+// If the form has been submitted.
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  //$user = 'YesCT';
+  $user = $_POST["user"];
+  //$user = validate_user($_POST["user"]);
+
+  // Get the results from twitter for the username from the form.
+  $something = new \CathyTest\JsonResult();
+  $result_json = $something->getJsonTimeline($settings, $user);
+
+  $result = new \CathyTest\Result();
+
+  // If no error, process the JSON result.
+  if (!$result->hasError($result_json)) {
+    $description = $result->getDescription($result_json);
+    $id = $result->getId($result_json);
+
+    // Print out select information.
+    echo("<h2>User description</h2>");
+    echo($description);
+
+    echo("<h2>Tweet id</h2>");
+    echo($id);
+  }
+
+  // Print out the raw JSON for debugging.
+  echo("<h2>Raw</h2>");
+  echo($result_json);
 }
-
-echo("<h2>Raw</h2>");
-
-echo($result_json);
 
 echo("</body></html>");
