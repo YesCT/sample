@@ -19,6 +19,9 @@ class Preprocess {
    *   Processed username.
    */
   public function preprocessUsername($username) {
+    // Trim trailing whitespace.
+    $username = rtrim($username);
+
     // Remove leading @ symbol.
     $stringToReplace = '@';
     $pos = strpos($username, $stringToReplace);
