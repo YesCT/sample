@@ -42,6 +42,10 @@ class ErrorTest extends \PHPUnit_Framework_TestCase {
         '{"errors":[{"code":34,"message":"Sorry, that page does not exist."}]}',
         TRUE,
       ],
+      'error not authorized' => [
+        '{"request":"\/1.1\/statuses\/user_timeline.json","error":"Not authorized."}',
+        TRUE,
+      ],
     ];
   }
 

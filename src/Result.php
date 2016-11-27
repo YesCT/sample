@@ -23,6 +23,9 @@ class Result {
     if (array_key_exists('errors', $result)) {
       $hasError = TRUE;
     }
+    elseif (array_key_exists('error', $result)) {
+      $hasError = TRUE;
+    }
 
     return $hasError;
   }
