@@ -28,7 +28,11 @@ class GathererController implements GathererControllerInterface {
    * {@inheritdoc}
    */
   public function gather($request) {
-    $this->gatherer->setUsername($request['user']);
+    $username_input = $request['user'];
+    $preprocess = new \CathyTest\Preprocess();
+    $username = $preprocess->preprocessUsername($username_input);
+
+    $this->gatherer->setUsername($username);
   }
 
 }

@@ -16,6 +16,14 @@ interface GathererInterface {
   public function getUsername();
 
   /**
+   * Returns wether the username is valid or not.
+   *
+   * @return bool
+   *   Valid or not.
+   */
+  public function isValidUsername();
+
+  /**
    * Gets user's profile description.
    *
    * @return string

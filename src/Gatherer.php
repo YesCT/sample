@@ -22,6 +22,13 @@ class Gatherer implements GathererInterface {
   protected $username = '';
 
   /**
+   * Whether the username is valid or not.
+   *
+   * @var string
+   */
+  protected $isValidUsername = FALSE;
+
+  /**
    * Constructs a \CathyTest\Gatherer object.
    */
   public function __construct() {
@@ -45,6 +52,13 @@ class Gatherer implements GathererInterface {
   /**
    * {@inheritdoc}
    */
+  public function isValidUsername() {
+    return $this->isValidUsername;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getDescription() {
     $description = 'something';
 
@@ -56,6 +70,13 @@ class Gatherer implements GathererInterface {
    */
   public function setUsername($username) {
     $this->username = $username;
+
+    $validation = new \CathyTest\Validation();
+    $username_is_valid = $validation->isValidUsername($username);
+
+    if($username_is_valid) {
+      $this->isValidUsername = TRUE;
+    }
   }
 
 }
