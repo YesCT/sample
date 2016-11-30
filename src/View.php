@@ -143,9 +143,10 @@ class View implements ViewInterface {
     $result_html = '';
 
     $action = htmlspecialchars($_SERVER["PHP_SELF"]);
-    $result_html .= '<form name="twitterUsername" method="get" action="' . $action . '" >';
+    $result_html .= '<form name="twitterWidget" method="get" action="' . $action . '" >';
     $result_html .= "\n";
-    $result_html .= '<input type="text" name="user" value="" />';
+    $result_html .= '<label for="user">Twitter username: </label>';
+    $result_html .= '<input type="text" name="user" id="user" value="" />';
     $result_html .= '<input type="submit" value="Gather Info" />';
     $result_html .= "\n";
     $result_html .= '</form>';

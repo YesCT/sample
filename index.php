@@ -19,7 +19,9 @@ require_once('mysecrets.php');
 
 ?>
 
-<html><head><title>Cathy Test</title></head><body>
+<html lang="en"><head><title>Cathy Test</title></head><body>
+
+<h1>Twitter API Example</h1>
 
 <?php
 
