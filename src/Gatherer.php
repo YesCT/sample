@@ -29,6 +29,13 @@ class Gatherer implements GathererInterface {
   protected $isValidUsername = FALSE;
 
   /**
+   * JSON of the timeline.
+   *
+   * @var string
+   */
+  protected $JsonTimeline ='';
+
+  /**
    * Constructs a \CathyTest\Gatherer object.
    */
   public function __construct() {
@@ -68,6 +75,13 @@ class Gatherer implements GathererInterface {
   /**
    * {@inheritdoc}
    */
+  public function getJsonTimeline() {
+    return $this->JsonTimeline;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function setUsername($username) {
     $this->username = $username;
 
@@ -76,6 +90,17 @@ class Gatherer implements GathererInterface {
 
     if($username_is_valid) {
       $this->isValidUsername = TRUE;
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setTimeline() {
+    if($this->isValidUsername()) {
+      // Get the results from twitter for the username from the form.
+      $json_result = new \CathyTest\JsonResult();
+      $this->JsonTimeline = $json_result->getJsonTimeline($this->settings, $this->username);
     }
   }
 

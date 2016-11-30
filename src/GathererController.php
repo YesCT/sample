@@ -33,6 +33,7 @@ class GathererController implements GathererControllerInterface {
     $username = $preprocess->preprocessUsername($username_input);
 
     $this->gatherer->setUsername($username);
+    $this->gatherer->setTimeline();
   }
 
 }

@@ -32,6 +32,14 @@ interface GathererInterface {
   public function getDescription();
 
   /**
+   * Gets the JSON of a user's timeline.
+   *
+   * @return string
+   *   Timeline as JSON.
+   */
+  public function getJsonTimeline();
+
+  /**
    * Stores the username.
    *
    * @param string $username

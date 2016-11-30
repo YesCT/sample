@@ -80,6 +80,24 @@ class View implements ViewInterface {
   }
 
   /**
+   * Outputs an error message based on the twitter result.
+   *
+   * @return string
+   *   HTML of the message.
+   */
+  public function outputTwitterError() {
+    $result_html = '';
+
+    $username = $this->gatherer->getUsername();
+
+    $result_html .= "<h2>Error</h2>\n";
+    $result_html .= "Could not get results from twitter for user $username. ";
+    $result_html .= "\n";
+
+    return $result_html;
+  }
+
+  /**
    * Outputs the result
    *
    * @return string
@@ -88,9 +106,29 @@ class View implements ViewInterface {
   public function outputResult() {
     $result_html = '';
 
-    $result_html .= "<h2>Something</h2>\n";
-    $result_html .= "Something.";
-    $result_html .= "\n";
+    $result = new Result();
+
+    // If no error, process the JSON result.
+    $result_json =$this->gatherer->getJsonTimeline();
+
+    if (!$result->hasError($result_json)) {
+      $description = $result->getDescription($result_json);
+      $id = $result->getId($result_json);
+
+      // Print out select information.
+      $result_html .= "<h2>User description</h2>\n";
+      $result_html .= $description;
+
+      $result_html .= "<h2>Tweet id</h2>\n";
+      $result_html .= $id;
+    }
+    else {
+      $result_html .= $this->outputTwitterError();
+    }
+
+    // Print out the raw JSON for debugging.
+    $result_html .= "<h2>Raw</h2>\n";
+    $result_html .= $result_json;
 
     return $result_html;
   }
