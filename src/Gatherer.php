@@ -66,15 +66,6 @@ class Gatherer implements GathererInterface {
   /**
    * {@inheritdoc}
    */
-  public function getDescription() {
-    $description = 'something';
-
-    return $description;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getJsonTimeline() {
     return $this->JsonTimeline;
   }

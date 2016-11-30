@@ -24,14 +24,6 @@ interface GathererInterface {
   public function isValidUsername();
 
   /**
-   * Gets user's profile description.
-   *
-   * @return string
-   *   Description.
-   */
-  public function getDescription();
-
-  /**
    * Gets the JSON of a user's timeline.
    *
    * @return string
