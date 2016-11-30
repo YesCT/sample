@@ -98,7 +98,7 @@ class View implements ViewInterface {
   }
 
   /**
-   * Outputs the result
+   * Outputs the result.
    *
    * @return string
    *   HTML of the result.
